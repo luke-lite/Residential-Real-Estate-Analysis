@@ -58,7 +58,7 @@ I then build 6 more iterations with varying results. The methods used include:
 
 Below is a dataframe containing the metrics for each model:
 
-
+![model_results](https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/graphs/model_results.png?raw=true)
 
 Ultimately, the last model, a polynomial regression model using all variables, was the most accurate. I was performing cursory analysis on each model as I went, but now that I have a final model I will examine and validate it in more detial.
 
@@ -80,14 +80,18 @@ The consistent R-squared scores suggest that the model is not over-fit and can p
 - **No Multicollinearity**: the most accurate models all had multicollinearity, so this assumption was not met. However, given that the purpose of the model is predictive and not inferential, this is not a major concern. The multiple interactions and collinearity allowed the model to make more accurate predictions, but at the cost of explainability. If the stakeholder had been interested in understanding the relative value each independent variable had when determining price, I would need to focus much more on removing multicollinearity.
 - **Homoscedasticity**: an initial graphing of the residuals of each model indicated that heteroscedasticity was an issue in most cases, as demonstrated by a cone-shaped residual graph. The graph from the baseline model is shown below:
 
+![prelim_model_residuals_qq](https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/graphs/prelim_model_residuals_qq.png?raw=true)
 
 The least heteroscedastic model, however, was the final model:
+
+![final_model_residuals_qq](https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/graphs/final_model_residuals_qq.png?raw=true)
 
 This was a slight surprise, since one of the causes of heteroscedasticity is multicollinearity. I expected the final model to be the most heteroscedastic, but in fact it was the least.
 
 I also examined the model statistics using `statsmodels`. Here are the results (with the coefficients removed due to the large number of them):
 
-
+![model_summary](https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/graphs/model_summary.png?raw=true)
+model_results.png
 
 Key takeaways:
 - the Omnibus score, as well as the Jarque-Bera score, confirm that the model fails the normality assumption.
