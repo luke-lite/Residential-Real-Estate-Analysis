@@ -1,7 +1,7 @@
 # Residential-Real-Estate-Analysis
 ## Luke DiPerna
 ### August, 2022
-![movie_clapper](https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/houses.jpg?raw=true)
+![houses](https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/houses.jpg?raw=true)
 
 ## Project Goal
 This project is designed to assist a residential real estate company (KC Real Estate) operating in King County. The company primarily helps homeowners sell their homes. The company needs a reliable and efficient way to properly valuate their clients homes. For this to be feasible, they will need a model that can accurately and reliably predict the price of a home given enough data regarding the features of the home.
@@ -58,7 +58,7 @@ I then build 6 more iterations with varying results. The methods used include:
 
 Below is a dataframe containing the metrics for each model:
 
-![model_results](https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/graphs/model_results.png?raw=true)
+<img src="https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/graphs/model_results.png">
 
 Ultimately, the last model, a polynomial regression model using all variables, was the most accurate. I was performing cursory analysis on each model as I went, but now that I have a final model I will examine and validate it in more detial.
 
@@ -80,18 +80,19 @@ The consistent R-squared scores suggest that the model is not over-fit and can p
 - **No Multicollinearity**: the most accurate models all had multicollinearity, so this assumption was not met. However, given that the purpose of the model is predictive and not inferential, this is not a major concern. The multiple interactions and collinearity allowed the model to make more accurate predictions, but at the cost of explainability. If the stakeholder had been interested in understanding the relative value each independent variable had when determining price, I would need to focus much more on removing multicollinearity.
 - **Homoscedasticity**: an initial graphing of the residuals of each model indicated that heteroscedasticity was an issue in most cases, as demonstrated by a cone-shaped residual graph. The graph from the baseline model is shown below:
 
-![prelim_model_residuals_qq](https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/graphs/prelim_model_residuals_qq.png?raw=true)
+<img src="https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/graphs/prelim_model_residuals_qq.jpg">
 
 The least heteroscedastic model, however, was the final model:
 
-![final_model_residuals_qq](https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/graphs/final_model_residuals_qq.png?raw=true)
+<img src="https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/graphs/final_model_residuals_qq.jpg">
 
 This was a slight surprise, since one of the causes of heteroscedasticity is multicollinearity. I expected the final model to be the most heteroscedastic, but in fact it was the least.
 
 I also examined the model statistics using `statsmodels`. Here are the results (with the coefficients removed due to the large number of them):
 
-![model_summary](https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/graphs/model_summary.png?raw=true)
-model_results.png
+<img src="https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/graphs/model_summary_overview.jpg">
+
+<img src="https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/graphs/model_summary_metrics.jpg">
 
 Key takeaways:
 - the Omnibus score, as well as the Jarque-Bera score, confirm that the model fails the normality assumption.
@@ -100,9 +101,9 @@ Key takeaways:
 
 ## Recommendations and Next Steps:
 
-Since the model can only explain 80-82% of the variance of the house price (R-squared), there is still some room for error. The RMSE is 159,510, which means that the standard deviation of the unexplained variance (error) is, on average $159,510. This is fairly large, so the model should not be used without human oversight. The predictions will need to be checked to ensure they make sense given what is known about the home. In particular, because the residuals increase as the actual home price increases, attention should be paid to predictions above a certain threshold.
+Since the model can only explain 80-82% of the variance of the house price (R-squared), there is still some room for error. The RMSE is 159,510, which means that the standard deviation of the unexplained variance (error) is, on average $159,510. This is fairly large, so the model should not be used without human oversight. The predictions will need to be checked to ensure they make sense given what is known about the home. In particular, because the residuals increase as the actual home price increases, attention should be paid to predictions above a certain threshold. Additionally, 
 
-There are several steps that can be taken to try and further improve the model, such as gathering additional data on the homes. It is possible that key features are missing that would increase the accuracy of the model. Alternatively, since the normality and linearity assumptions both failed, it is possible that a method other than regression could provide better insights. It might be worthwhile to consider other types of models that could outperform the current one.
+There are several steps that can be taken to try and further improve the model, such as gathering additional data on the homes. It is possible that key features are missing that would increase the accuracy of the model. Additionally, some predictions are negative, so changing the parameters of the model to prevent this could help improve it drastically as well. Alternatively, since the normality and linearity assumptions both failed, it is possible that a method other than regression could provide better insights. It might be worthwhile to consider other types of models that could outperform the current one.
 
 ## Repository Structure
 ```
