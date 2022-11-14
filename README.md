@@ -113,4 +113,5 @@ There are several steps that can be taken to try and further improve the model, 
 ├── README.md
 ├── Residential Real Estate Analysis.ipynb
 ├── houses.jpg
+├── residential real estate presentation.jpg
 ```
