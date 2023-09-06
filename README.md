@@ -1,4 +1,4 @@
-# Residential-Real-Estate-Analysis
+# Residential Real Estate Analysis
 ## Luke DiPerna
 ### August, 2022
 ![houses](https://github.com/luke-lite/Residential-Real-Estate-Analysis/blob/main/houses.jpg?raw=true)
